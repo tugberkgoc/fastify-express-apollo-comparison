@@ -42,6 +42,24 @@ $ npm install
 $ npm run serve
 ```
 
+### Create MongoDB Local Database with Docker
+
+You can create your local mongo db as follows.
+
+```sh
+$ cd fastify-api
+$ docker-compose up --build -d
+```
+
+### Seed Dummy Data
+
+You can seed dummy data in your database.
+
+```sh
+$ cd fastify-api/db/seeders
+$ node seed.js
+```
+
 ### Development
 
 Want to contribute? Great!
