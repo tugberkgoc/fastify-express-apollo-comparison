@@ -87,7 +87,7 @@ export default {
       const expressExecutionTime = await this.measureExecutionTimeExpress()
 
       this.datacollection = {
-        labels: ['Graphql', 'Fastify', 'Express'],
+        labels: ['Apollo (Graphql)', 'Fastify', 'Express'],
         datasets: [
           {
             label: 'Data One',
