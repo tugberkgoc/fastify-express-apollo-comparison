@@ -1,4 +1,4 @@
-* # Fastify, Express and Apollo’s Graphql Performance Comparison
+# Fastify, Express and Apollo’s Graphql Performance Comparison
 
 Performance testing with using fastify, express and apollo servers.
 
