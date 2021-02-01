@@ -1,0 +1,39 @@
+{
+  "name": "fastify-api",
+  "version": "1.0.0",
+  "description": "Fastify Server Api",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "serve": "nodemon server.js",
+    "seed": "node ./db/seeders/seed.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tugberk Goc",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "config": "^3.3.3",
+    "fastify": "^3.11.0",
+    "fastify-autoload": "^3.4.2",
+    "fastify-cors": "^5.2.0",
+    "fastify-formbody": "^5.0.0",
+    "fastify-mongodb": "^2.0.1",
+    "fastify-multipart": "^3.3.1",
+    "md5": "^2.3.0",
+    "mongoose": "^5.11.14",
+    "pino-pretty": "^4.3.0"
+  },
+  "devDependencies": {
+    "babel-register": "^6.26.0",
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^5.0.0",
+    "faker": "^5.2.0",
+    "nodemon": "^2.0.7"
+  }
+}

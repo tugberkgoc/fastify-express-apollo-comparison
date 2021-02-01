@@ -1,0 +1,10 @@
+{
+  "server": { "port": "3000", "logSeverity": "info", "bodyLimit": 25048576 },
+  "app": {
+    "externalAPITimeout": 5000,
+    "userJwtExpiry": "7d",
+    "userTokenExpiryInSeconds": "604800",
+    "resetPasswordTokenExpiryInSeconds": "86400",
+    "userPasswordRegex": ".{6,}"
+  }
+}
