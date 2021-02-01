@@ -11,7 +11,7 @@ const server = require('./app')({
 
 const port =
   process.env.PORT ||
-  (config.has('server.port') ? config.get('server.port') : '9001')
+  (config.has('server.port') ? config.get('server.port') : '9002')
 
 server.listen(port, '0.0.0.0', err => {
   if (err) {

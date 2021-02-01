@@ -1,5 +1,5 @@
 {
-  "server": { "port": "9001", "logSeverity": "info", "bodyLimit": 25048576 },
+  "server": { "port": "9002", "logSeverity": "info", "bodyLimit": 25048576 },
   "app": {
     "externalAPITimeout": 5000,
     "userJwtExpiry": "7d",

@@ -17,6 +17,8 @@ import { defaultClient as apolloClient } from '@/main'
 import { GET_POSTS } from '@/queries'
 
 import axios from 'axios'
+import ApolloClient from 'apollo-boost'
+import { ROOT_API_EXPRESS, ROOT_API_FASTIFY_GQL } from '../config/app.config'
 
 import BarChart from '@/components/BarChart.js'
 import LoadingBar from '@/components/LoadingBar'
@@ -80,14 +82,21 @@ export default {
     async startExecute () {
       this.disabled = false
 
-      const graphqlExecutionTime = await this.measureExecutionTimeGraphql()
+      const apolloGraphqlExecutionTime = await this.measureExecutionTimeApolloGraphql()
 
       const fastifyExecutionTime = await this.measureExecutionTimeFastify()
 
       const expressExecutionTime = await this.measureExecutionTimeExpress()
 
+      const fastifyGqlExecutionTime = await this.measureExecutionTimeFastifyGql()
+
       this.datacollection = {
-        labels: ['Apollo (Graphql)', 'Fastify', 'Express'],
+        labels: [
+          'Apollo (Graphql)',
+          'Fastify (REST API)',
+          'Express (REST API)',
+          'Fastify Mercuries (Graphql)'
+        ],
         datasets: [
           {
             label: 'Data One',
@@ -96,9 +105,10 @@ export default {
             borderWidth: 1,
             pointBorderColor: '#249EBF',
             data: [
-              graphqlExecutionTime,
+              apolloGraphqlExecutionTime,
               fastifyExecutionTime,
-              expressExecutionTime
+              expressExecutionTime,
+              fastifyGqlExecutionTime
             ]
           }
         ]
@@ -106,7 +116,7 @@ export default {
 
       this.disabled = true
     },
-    async measureExecutionTimeGraphql () {
+    async measureExecutionTimeApolloGraphql () {
       const start = new Date().getTime()
 
       for (let i = 1; i <= this.howMany; i++) {
@@ -137,7 +147,25 @@ export default {
       const start = new Date().getTime()
 
       for (let i = 1; i <= this.howMany; i++) {
-        await axiosInstance.get('http://localhost:3001/api/posts')
+        await axiosInstance.get(`${ROOT_API_EXPRESS}/api/posts`)
+      }
+
+      const end = new Date().getTime()
+
+      return end - start
+    },
+    async measureExecutionTimeFastifyGql () {
+      const apolloInstance = new ApolloClient({
+        uri: `${ROOT_API_FASTIFY_GQL}/graphql`
+      })
+
+      const start = new Date().getTime()
+
+      for (let i = 1; i <= this.howMany; i++) {
+        await apolloInstance.query({
+          query: GET_POSTS,
+          fetchPolicy: 'no-cache'
+        })
       }
 
       const end = new Date().getTime()

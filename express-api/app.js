@@ -34,4 +34,4 @@ app.get('/api/posts', async (req, res, next) => {
   return res.status(201).json(posts)
 })
 
-app.listen(3001)
+app.listen(9003)

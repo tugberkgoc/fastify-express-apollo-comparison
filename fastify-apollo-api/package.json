@@ -1,27 +1,32 @@
 {
-  "name": "express-api",
+  "name": "fastify-apollo-api",
   "version": "1.0.0",
-  "description": "Fastify Server Api",
+  "description": "A blazing fast REST APIs with Node.js, MongoDB and Fastify.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "serve": "nodemon server.js",
-    "seed": "node ./db/seeders/seed.js",
+    "seed": "node ./src/db/seeders/seed.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tugberk Goc",
   "license": "ISC",
   "dependencies": {
+    "@graphql-tools/schema": "^7.1.2",
     "bcrypt": "^5.0.0",
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
+    "config": "^3.3.3",
+    "fastify": "^3.11.0",
+    "fastify-autoload": "^3.4.2",
+    "fastify-cors": "^5.2.0",
+    "graphql": "^15.5.0",
     "md5": "^2.3.0",
+    "mercurius": "^6.11.0",
     "mongoose": "^5.11.14",
-    "pino-pretty": "^4.3.0"
+    "pino-pretty": "^4.4.0"
   },
   "devDependencies": {
     "babel-register": "^6.26.0",
-    "eslint": "^7.18.0",
+    "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",

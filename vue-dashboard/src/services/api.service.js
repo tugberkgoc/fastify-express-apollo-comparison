@@ -2,12 +2,12 @@ import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import NProgress from 'nprogress'
-import { ROOT_API } from '../config/app.config'
+import { ROOT_API_FASTIFY } from '../config/app.config'
 
 const ApiService = {
   init: () => {
     Vue.use(VueAxios, axios)
-    Vue.axios.defaults.baseURL = ROOT_API
+    Vue.axios.defaults.baseURL = ROOT_API_FASTIFY
 
     Vue.axios.interceptors.request.use(
       config => {

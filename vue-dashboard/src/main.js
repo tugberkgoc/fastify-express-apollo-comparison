@@ -8,10 +8,12 @@ import ApiService from '@/services/api.service'
 import ApolloClient from 'apollo-boost'
 import VueApollo from 'vue-apollo'
 
+import { ROOT_API_APOLLO } from '@/config/app.config'
+
 Vue.use(VueApollo)
 
 export const defaultClient = new ApolloClient({
-  uri: 'http://localhost:4000/graphql'
+  uri: `${ROOT_API_APOLLO}/graphql`
 })
 
 const apolloProvider = new VueApollo({ defaultClient })

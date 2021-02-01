@@ -28,6 +28,6 @@ const server = new ApolloServer({
   }
 })
 
-server.listen().then(({ url }) => {
+server.listen({ port: 9004 }).then(({ url }) => {
   console.log(`Server listening on ${url}`)
 })
