@@ -1,5 +1,5 @@
 {
-  "name": "fastify-apollo-api",
+  "name": "fastify-mercuries-api",
   "version": "1.0.0",
   "description": "A blazing fast REST APIs with Node.js, MongoDB and Fastify.",
   "main": "server.js",

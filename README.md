@@ -31,6 +31,12 @@ $ npm run serve
 ```
 
 ```sh
+$ cd fastify-mercuries-api
+$ npm install
+$ npm run serve
+```
+
+```sh
 $ cd fastify-api
 $ npm install
 $ npm run serve
