@@ -25,7 +25,7 @@ $ npm run server
 ```
 
 ```sh
-$ cd express-api
+$ cd fastify-api
 $ npm install
 $ npm run serve
 ```
@@ -37,7 +37,13 @@ $ npm run serve
 ```
 
 ```sh
-$ cd fastify-api
+$ cd express-api
+$ npm install
+$ npm run serve
+```
+
+```sh
+$ cd apollo-express-api
 $ npm install
 $ npm run serve
 ```
