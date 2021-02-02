@@ -18,7 +18,11 @@ import { GET_POSTS } from '@/queries'
 
 import axios from 'axios'
 import ApolloClient from 'apollo-boost'
-import { ROOT_API_EXPRESS, ROOT_API_FASTIFY_GQL } from '../config/app.config'
+import {
+  ROOT_API_EXPRESS,
+  ROOT_API_FASTIFY_GQL,
+  ROOT_API_APOLLO_EXPRESS
+} from '../config/app.config'
 
 import BarChart from '@/components/BarChart.js'
 import LoadingBar from '@/components/LoadingBar'
@@ -86,16 +90,19 @@ export default {
 
       const fastifyExecutionTime = await this.measureExecutionTimeFastify()
 
+      const fastifyGqlExecutionTime = await this.measureExecutionTimeFastifyGql()
+
       const expressExecutionTime = await this.measureExecutionTimeExpress()
 
-      const fastifyGqlExecutionTime = await this.measureExecutionTimeFastifyGql()
+      const apolloExpressExecutionTime = await this.measureExecutionTimeApolloExpress()
 
       this.datacollection = {
         labels: [
           'Apollo (Graphql)',
           'Fastify (REST API)',
+          'Fastify Mercuries (Graphql)',
           'Express (REST API)',
-          'Fastify Mercuries (Graphql)'
+          'Apollo Express (Graphql)'
         ],
         datasets: [
           {
@@ -107,8 +114,9 @@ export default {
             data: [
               apolloGraphqlExecutionTime,
               fastifyExecutionTime,
+              fastifyGqlExecutionTime,
               expressExecutionTime,
-              fastifyGqlExecutionTime
+              apolloExpressExecutionTime
             ]
           }
         ]
@@ -157,6 +165,24 @@ export default {
     async measureExecutionTimeFastifyGql () {
       const apolloInstance = new ApolloClient({
         uri: `${ROOT_API_FASTIFY_GQL}/graphql`
+      })
+
+      const start = new Date().getTime()
+
+      for (let i = 1; i <= this.howMany; i++) {
+        await apolloInstance.query({
+          query: GET_POSTS,
+          fetchPolicy: 'no-cache'
+        })
+      }
+
+      const end = new Date().getTime()
+
+      return end - start
+    },
+    async measureExecutionTimeApolloExpress () {
+      const apolloInstance = new ApolloClient({
+        uri: `${ROOT_API_APOLLO_EXPRESS}/graphql`
       })
 
       const start = new Date().getTime()
