@@ -5,6 +5,7 @@ require('./db')
 
 const Post = require('./db/models/Post')
 const User = require('./db/models/User')
+const Comment = require('./db/models/Comment')
 
 const app = express()
 
@@ -32,6 +33,15 @@ app.get('/api/posts', async (req, res, next) => {
     })
 
   return res.status(201).json(posts)
+})
+
+app.get('/api/posts/:id', async (req, res, next) => {
+  const { id } = req.params
+  const post = await Post.findById(id).populate({
+    path: 'comments',
+    model: 'Comment'
+  })
+  return res.status(201).json(post)
 })
 
 app.listen(9003)

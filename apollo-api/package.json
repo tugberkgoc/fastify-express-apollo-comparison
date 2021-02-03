@@ -4,15 +4,16 @@
   "description": "Apollo Graphql Server Api",
   "main": "server.js",
   "scripts": {
-    "server": "nodemon app.js",
+    "serve": "nodemon app.js",
     "client": "cd .. && cd client && npm run serve",
-    "dev": "concurrently --names \"server,client\" \"npm run server --silent\" \"npm run client --silent\""
+    "dev": "concurrently --names \"serve,client\" \"npm run serve --silent\" \"npm run client --silent\""
   },
   "keywords": [],
   "author": "Tugberk Goc",
   "license": "ISC",
   "dependencies": {
     "apollo-server": "^2.19.2",
+    "bcrypt": "^5.0.0",
     "config": "^3.3.3",
     "dotenv": "^8.2.0",
     "graphql": "^15.5.0",

@@ -6,6 +6,7 @@ require('./db')
 
 const Post = require('./db/models/Post')
 const User = require('./db/models/User')
+const Comment = require('./db/models/Comment')
 
 const fs = require('fs')
 const path = require('path')
@@ -19,7 +20,7 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: async ({}) => {
-    return { User, Post }
+    return { User, Post, Comment }
   }
 })
 

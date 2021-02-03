@@ -2,23 +2,30 @@ import { gql } from 'apollo-boost'
 
 export const GET_POSTS = gql`
   query {
-    getPosts {
+    posts {
       _id
       title
       imageUrl
-      categories
       description
       likes
       createdDate
-      messages {
+    }
+  }
+`
+
+export const GET_POST_BY_ID = gql`
+  query($id: ID!) {
+    post(id: $id) {
+      _id
+      title
+      imageUrl
+      description
+      likes
+      createdDate
+      comments {
         _id
-        messageBody
-        messageDate
-        messageUser {
-          _id
-          username
-          avatar
-        }
+        title
+        content
       }
     }
   }

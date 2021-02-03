@@ -14,6 +14,7 @@ const { makeExecutableSchema } = require('@graphql-tools/schema')
 
 const User = require('./db/models/User')
 const Post = require('./db/models/Post')
+const Comment = require('./db/models/Comment')
 require('./db')
 
 const build = (opts = {}) => {
@@ -33,7 +34,7 @@ const build = (opts = {}) => {
       resolvers
     }),
     context: async ({}) => {
-      return { User, Post }
+      return { User, Post, Comment }
     }
   })
 

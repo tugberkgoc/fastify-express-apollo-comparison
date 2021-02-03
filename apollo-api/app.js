@@ -11,6 +11,7 @@ const resolvers = require('./resolvers')
 require('dotenv').config({ path: 'variables.env' })
 const User = require('./models/User')
 const Post = require('./models/Post')
+const Comment = require('./models/Comment')
 
 mongoose
   .connect(
@@ -24,7 +25,7 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: async ({}) => {
-    return { User, Post }
+    return { User, Post, Comment }
   }
 })
 

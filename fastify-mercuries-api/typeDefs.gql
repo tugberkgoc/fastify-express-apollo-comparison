@@ -13,30 +13,28 @@ type Post {
   _id: ID
   title: String!
   imageUrl: String!
-  categories: [String]!
   description: String!
   createdDate: String
   likes: Int
   createdBy: User!
-  messages: [Message]
+  comments: [Comment]
 }
 
-type Message {
+type Comment {
   _id: ID
-  messageBody: String!
-  messageDate: String
-  messageUser: User!
-}
+  title: String!
+  content: String!
+} 
 
 type Query {
-  getPosts: [Post]
+  posts: [Post]
+  post(id: ID!): Post
 }
 
 type Mutation {
   addPost(
     title: String!
-    imageUrl: String!
-    categories: [String]!
+    imageUrl: String! 
     description: String!
     creatorId: ID!
   ): Post!
